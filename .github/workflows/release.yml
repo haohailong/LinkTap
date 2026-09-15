@@ -25,7 +25,8 @@ jobs:
 
       - name: Build release archives
         run: |
-          python3 scripts/package_release.py --output-dir release
+          python3 scripts/package_release.py --output-dir release --update-readme
+          git diff --exit-code -- README.md
           cp "release/LinkTap-${GITHUB_REF_NAME#v}.zip" release/LinkTap.zip
           cd release
           sha256sum LinkTap.zip > LinkTap.zip.sha256

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import struct
 import sys
 import zlib
@@ -14,14 +15,15 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+README_PATH = PROJECT_ROOT / "README.md"
 FIXED_TIMESTAMP = (2026, 1, 1, 0, 0, 0)
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 PNG_METADATA_CHUNKS = {b"eXIf", b"iTXt", b"tEXt", b"tIME", b"zTXt"}
 
 RELEASE_FILES = (
     "CHANGELOG.md",
+    "LICENSE",
     "PRIVACY.md",
-    "README.md",
     "assets/icons/icon16.png",
     "assets/icons/icon32.png",
     "assets/icons/icon48.png",
@@ -32,6 +34,11 @@ RELEASE_FILES = (
     "popup.html",
     "popup.js",
     "service-worker.js",
+)
+
+README_CHECKSUM_PATTERN = re.compile(
+    r"(<!-- release-sha256:start -->\n).*?(\n<!-- release-sha256:end -->)",
+    re.DOTALL,
 )
 
 
@@ -117,6 +124,22 @@ def build(output_dir: Path) -> tuple[Path, Path, str]:
     return archive, checksum_file, digest
 
 
+def update_readme_checksum(version: str, digest: str) -> None:
+    readme = README_PATH.read_text(encoding="utf-8")
+    block = (
+        '<p align="center">\n'
+        f"  <strong>v{version} · SHA-256 (LinkTap.zip)</strong><br>\n"
+        f"  <code>{digest}</code><br>\n"
+        '  <a href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip.sha256">'
+        "校验文件 / Checksum file</a>\n"
+        "</p>"
+    )
+    updated, replacements = README_CHECKSUM_PATTERN.subn(r"\1" + block + r"\2", readme)
+    if replacements != 1:
+        raise ValueError("README checksum markers are missing or duplicated")
+    README_PATH.write_text(updated, encoding="utf-8")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -125,10 +148,17 @@ def main() -> int:
         default=PROJECT_ROOT / "dist",
         help="directory for the ZIP and SHA-256 file (default: dist)",
     )
+    parser.add_argument(
+        "--update-readme",
+        action="store_true",
+        help="update the release SHA-256 block in README.md",
+    )
     args = parser.parse_args()
 
     try:
         archive, checksum_file, digest = build(args.output_dir.resolve())
+        if args.update_readme:
+            update_readme_checksum(manifest_version(), digest)
     except (FileNotFoundError, ValueError, json.JSONDecodeError) as error:
         print(f"Release build failed: {error}", file=sys.stderr)
         return 1
@@ -136,6 +166,8 @@ def main() -> int:
     print(f"Created {archive}")
     print(f"Created {checksum_file}")
     print(f"SHA-256 {digest}")
+    if args.update_readme:
+        print(f"Updated {README_PATH}")
     return 0
 
 

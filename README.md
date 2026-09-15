@@ -7,6 +7,7 @@
 <h1 align="center">LinkTap</h1>
 
 <p align="center">
+  <strong>Chrome Extension · Chrome 浏览器扩展</strong><br>
   按住自定义修饰键，点击即可复制链接。<br>
   <sub>Modifier-click any link to copy its URL without opening it.</sub>
 </p>
@@ -18,10 +19,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/haohailong/LinkTap/releases/latest"><img alt="Version 2.0.1" src="https://img.shields.io/badge/version-2.0.1-1744e8?style=flat-square"></a>
+  <a href="https://github.com/haohailong/LinkTap/releases/latest"><img alt="Version 2.0.2" src="https://img.shields.io/badge/version-2.0.2-1744e8?style=flat-square"></a>
   <img alt="Manifest V3" src="https://img.shields.io/badge/Chrome-Manifest_V3-34a853?style=flat-square&logo=googlechrome&logoColor=white">
   <img alt="5 languages" src="https://img.shields.io/badge/languages-5-7c3aed?style=flat-square">
+  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-f59e0b?style=flat-square"></a>
 </p>
+
+<!-- release-sha256:start -->
+<p align="center">
+  <strong>v2.0.2 · SHA-256 (LinkTap.zip)</strong><br>
+  <code>0b376c53ae50c3b0f1135d4fa2b51bb40905d4bb4fbff05fc38adce5095880a5</code><br>
+  <a href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip.sha256">校验文件 / Checksum file</a>
+</p>
+<!-- release-sha256:end -->
 
 <p align="center">
   <a href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip"><strong>直接下载 / Direct download</strong></a>
@@ -95,7 +105,7 @@ Chrome 不允许内容脚本运行在 `chrome://` 内部页面、Chrome 网上�
 项目无需安装依赖或执行编译。使用 Python 3 生成可重复的发布包：
 
 ```bash
-python3 scripts/package_release.py
+python3 scripts/package_release.py --update-readme
 ```
 
 输出文件位于 `dist/`：
@@ -108,9 +118,10 @@ LinkTap-<version>.sha256
 ### 发布新版本
 
 1. 更新 `manifest.json` 中的版本号和 `CHANGELOG.md`。
-2. 提交修改并创建对应标签，例如 `v2.0.1`。
-3. 将标签推送到 GitHub。
-4. GitHub Actions 会验证版本、构建 ZIP、生成 SHA-256，并创建 GitHub Release。
+2. 运行 `python3 scripts/package_release.py --update-readme`，同步 README 中的 SHA-256。
+3. 提交修改并创建对应标签，例如 `v2.0.2`。
+4. 将标签推送到 GitHub。
+5. GitHub Actions 会验证版本和 SHA-256，构建发布包并创建 GitHub Release。
 
 [返回顶部](#top) · [Jump to English](#english)
 
@@ -174,7 +185,7 @@ Chrome does not allow content scripts on `chrome://` pages, the Chrome Web Store
 No dependencies or compilation are required. Use Python 3 to create a reproducible release archive:
 
 ```bash
-python3 scripts/package_release.py
+python3 scripts/package_release.py --update-readme
 ```
 
 The generated files are placed in `dist/`:
@@ -187,9 +198,10 @@ LinkTap-<version>.sha256
 ### Publish a new release
 
 1. Update the version in `manifest.json` and add the release notes to `CHANGELOG.md`.
-2. Commit the changes and create a matching tag, such as `v2.0.1`.
-3. Push the tag to GitHub.
-4. GitHub Actions verifies the version, builds the ZIP archives and SHA-256 files, and creates the GitHub Release.
+2. Run `python3 scripts/package_release.py --update-readme` to synchronize the SHA-256 shown in this README.
+3. Commit the changes and create a matching tag, such as `v2.0.2`.
+4. Push the tag to GitHub.
+5. GitHub Actions verifies the version and SHA-256, builds the release assets, and creates the GitHub Release.
 
 [Back to top](#top) · [跳转到简体中文](#zh-cn)
 
@@ -203,6 +215,10 @@ Issues and improvements are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) bef
 
 ## License / 许可证
 
-本项目尚未声明开源许可证；未明确授权时，默认版权仍由项目所有者保留。
+LinkTap 采用 [MIT License](LICENSE) 发布，允许使用、复制、修改、合并、发布和分发，但必须保留版权及许可证声明。
 
-No open-source license has been selected. Unless permission is explicitly granted, all rights remain reserved by the project owner.
+LinkTap is released under the [MIT License](LICENSE). You may use, copy, modify, merge, publish, and distribute it, provided that the copyright and license notice are retained.
+
+版权所有 © 2026 [Hailong Hao](https://github.com/haohailong)（[@haohailong](https://github.com/haohailong)）。
+
+Copyright © 2026 [Hailong Hao](https://github.com/haohailong) ([@haohailong](https://github.com/haohailong)).

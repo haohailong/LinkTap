@@ -2,6 +2,18 @@
 
 本项目的主要变更都会记录在此文件中，版本格式遵循 [Semantic Versioning](https://semver.org/)。
 
+## [2.0.2] - 2026-09-15
+
+### Added
+
+- README 增加中英双语导航、Chrome Extension 标识和 Release SHA-256。
+- 项目采用 MIT License，并在发布包中附带许可证。
+
+### Changed
+
+- 完善 macOS 元数据文件忽略规则。
+- 打包流程会验证 README 中记录的 SHA-256 与发布包一致。
+
 ## [2.0.1] - 2026-09-15
 
 ### Security
