@@ -8,6 +8,7 @@
 
 - README 增加中英双语导航、Chrome Extension 标识和 Release SHA-256。
 - 项目采用 MIT License，并在发布包中附带许可证。
+- 新增中英双语 Landing Page 和 GitHub Pages 自动部署工作流。
 
 ### Changed
 

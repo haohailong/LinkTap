@@ -16,6 +16,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 README_PATH = PROJECT_ROOT / "README.md"
+LANDING_PAGE_PATH = PROJECT_ROOT / "docs" / "index.html"
 FIXED_TIMESTAMP = (2026, 1, 1, 0, 0, 0)
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 PNG_METADATA_CHUNKS = {b"eXIf", b"iTXt", b"tEXt", b"tIME", b"zTXt"}
@@ -39,6 +40,14 @@ RELEASE_FILES = (
 README_CHECKSUM_PATTERN = re.compile(
     r"(<!-- release-sha256:start -->\n).*?(\n<!-- release-sha256:end -->)",
     re.DOTALL,
+)
+LANDING_PAGE_CHECKSUM_PATTERN = re.compile(
+    r"(<!-- release-sha256:start -->\n\s*<code id=\"checksum-value\">).*?"
+    r"(</code>\n\s*<!-- release-sha256:end -->)",
+    re.DOTALL,
+)
+LANDING_PAGE_VERSION_PATTERN = re.compile(
+    r'(<strong id="release-version">)v[^<]+(</strong>)'
 )
 
 
@@ -140,6 +149,22 @@ def update_readme_checksum(version: str, digest: str) -> None:
     README_PATH.write_text(updated, encoding="utf-8")
 
 
+def update_landing_page(version: str, digest: str) -> None:
+    if not LANDING_PAGE_PATH.is_file():
+        return
+
+    page = LANDING_PAGE_PATH.read_text(encoding="utf-8")
+    page, checksum_replacements = LANDING_PAGE_CHECKSUM_PATTERN.subn(
+        lambda match: match.group(1) + digest + match.group(2), page
+    )
+    page, version_replacements = LANDING_PAGE_VERSION_PATTERN.subn(
+        lambda match: match.group(1) + f"v{version}" + match.group(2), page
+    )
+    if checksum_replacements != 1 or version_replacements != 1:
+        raise ValueError("landing page release metadata markers are missing or duplicated")
+    LANDING_PAGE_PATH.write_text(page, encoding="utf-8")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -158,7 +183,9 @@ def main() -> int:
     try:
         archive, checksum_file, digest = build(args.output_dir.resolve())
         if args.update_readme:
-            update_readme_checksum(manifest_version(), digest)
+            version = manifest_version()
+            update_readme_checksum(version, digest)
+            update_landing_page(version, digest)
     except (FileNotFoundError, ValueError, json.JSONDecodeError) as error:
         print(f"Release build failed: {error}", file=sys.stderr)
         return 1
@@ -168,6 +195,8 @@ def main() -> int:
     print(f"SHA-256 {digest}")
     if args.update_readme:
         print(f"Updated {README_PATH}")
+        if LANDING_PAGE_PATH.is_file():
+            print(f"Updated {LANDING_PAGE_PATH}")
     return 0
 
 

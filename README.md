@@ -28,13 +28,15 @@
 <!-- release-sha256:start -->
 <p align="center">
   <strong>v2.0.2 · SHA-256 (LinkTap.zip)</strong><br>
-  <code>0b376c53ae50c3b0f1135d4fa2b51bb40905d4bb4fbff05fc38adce5095880a5</code><br>
+  <code>4ea02477e5e3bbe93ccc273eacbf313e96e834463430d802ec772fb7879b4620</code><br>
   <a href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip.sha256">校验文件 / Checksum file</a>
 </p>
 <!-- release-sha256:end -->
 
 <p align="center">
   <a href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip"><strong>直接下载 / Direct download</strong></a>
+  ·
+  <a href="https://haohailong.github.io/LinkTap/">网站 / Website</a>
   ·
   <a href="https://github.com/haohailong/LinkTap/releases/latest">发布说明 / Release notes</a>
   ·

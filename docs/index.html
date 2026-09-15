@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b39f5">
+    <meta name="description" content="LinkTap is a private Chrome extension that copies a link URL when you modifier-click it.">
+    <title>LinkTap — Chrome Extension</title>
+    <link rel="icon" href="assets/icon128.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body data-language="en">
+    <a class="skip-link" href="#main">
+      <span class="lang lang-zh">跳到主要内容</span>
+      <span class="lang lang-en">Skip to content</span>
+    </a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="LinkTap home">
+        <img src="assets/icon128.png" width="42" height="42" alt="">
+        <span>LinkTap</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#features">
+          <span class="lang lang-zh">功能</span>
+          <span class="lang lang-en">Features</span>
+        </a>
+        <a href="#install">
+          <span class="lang lang-zh">安装</span>
+          <span class="lang lang-en">Install</span>
+        </a>
+        <a href="https://github.com/haohailong/LinkTap">
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+
+      <div class="language-switch" role="group" aria-label="Language">
+        <button type="button" data-set-language="zh" aria-pressed="false">中</button>
+        <button type="button" data-set-language="en" aria-pressed="true">EN</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>
+            Chrome Extension · Chrome 浏览器扩展
+          </p>
+
+          <h1>
+            <span class="lang lang-zh">按住。点击。<br><em>链接已复制。</em></span>
+            <span class="lang lang-en">Hold. Click.<br><em>Link copied.</em></span>
+          </h1>
+
+          <p class="hero-description lang lang-zh">
+            自定义一个或多个修饰键，左键点击任意链接即可复制 URL，不打开页面，也不打断当前工作。
+          </p>
+          <p class="hero-description lang lang-en">
+            Choose one or more modifier keys, then left-click any link to copy its URL—without opening it or breaking your flow.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip">
+              <span class="lang lang-zh">下载最新版</span>
+              <span class="lang lang-en">Download latest</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+            <a class="button button-secondary" href="https://github.com/haohailong/LinkTap">
+              <span class="lang lang-zh">查看源码</span>
+              <span class="lang lang-en">View source</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <p class="trust-line">
+            <span class="lang lang-zh">无广告 · 无追踪 · 无外部网络请求</span>
+            <span class="lang lang-en">No ads · No tracking · No external requests</span>
+          </p>
+        </div>
+
+        <div class="demo-card" aria-label="LinkTap shortcut demonstration">
+          <div class="demo-window">
+            <div class="window-bar" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <div class="address-bar">example.com/article</div>
+            </div>
+            <div class="demo-content">
+              <div class="demo-label">
+                <span class="lang lang-zh">你的自定义组合</span>
+                <span class="lang lang-en">Your custom combo</span>
+              </div>
+              <div class="key-row" aria-label="Command Shift click">
+                <kbd>⌘</kbd>
+                <span>+</span>
+                <kbd>⇧</kbd>
+                <span>+</span>
+                <span class="mouse">
+                  <svg viewBox="0 0 34 46" aria-hidden="true">
+                    <path d="M17 2C9.3 2 3 8.3 3 16v14c0 7.7 6.3 14 14 14s14-6.3 14-14V16C31 8.3 24.7 2 17 2Z"></path>
+                    <path d="M17 3v13M4 17h26"></path>
+                    <path class="mouse-click" d="M17 3v13H4c0-7.2 5.8-13 13-13Z"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="link-preview">
+                <span class="link-icon" aria-hidden="true">↗</span>
+                <span>example.com/article</span>
+              </div>
+              <div class="success-message">
+                <span class="check" aria-hidden="true">✓</span>
+                <span class="lang lang-zh">链接已复制</span>
+                <span class="lang lang-en">Link copied</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="release-strip" aria-labelledby="release-title">
+        <div>
+          <p class="section-kicker" id="release-title">
+            <span class="lang lang-zh">当前版本</span>
+            <span class="lang lang-en">Current release</span>
+          </p>
+          <strong id="release-version">v2.0.2</strong>
+        </div>
+        <div class="checksum">
+          <span>SHA-256 · LinkTap.zip</span>
+          <!-- release-sha256:start -->
+          <code id="checksum-value">4ea02477e5e3bbe93ccc273eacbf313e96e834463430d802ec772fb7879b4620</code>
+          <!-- release-sha256:end -->
+        </div>
+        <button class="copy-button" type="button" data-copy-checksum>
+          <span class="lang lang-zh">复制校验值</span>
+          <span class="lang lang-en">Copy checksum</span>
+        </button>
+        <p class="copy-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-heading">
+          <p class="section-kicker">LinkTap</p>
+          <h2 class="lang lang-zh">一个动作，省去绕路。</h2>
+          <h2 class="lang lang-en">One action. No detour.</h2>
+          <p class="lang lang-zh">为频繁收集、整理和分享链接而设计，简单到不需要改变习惯。</p>
+          <p class="lang lang-en">Made for collecting, organizing, and sharing links without changing how you browse.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article>
+            <span class="feature-number">01</span>
+            <h3 class="lang lang-zh">任意组合</h3>
+            <h3 class="lang lang-en">Any combination</h3>
+            <p class="lang lang-zh">自由组合 Control、Option、Shift 和 Command，单键或四键都可以。</p>
+            <p class="lang lang-en">Combine Control, Option, Shift, and Command—from one key to all four.</p>
+          </article>
+          <article>
+            <span class="feature-number">02</span>
+            <h3 class="lang lang-zh">精确触发</h3>
+            <h3 class="lang lang-en">Exact activation</h3>
+            <p class="lang lang-zh">只在组合完全匹配时复制，避免误触、跳转或意外下载。</p>
+            <p class="lang lang-en">Copy only on an exact match, preventing accidental navigation or downloads.</p>
+          </article>
+          <article>
+            <span class="feature-number">03</span>
+            <h3 class="lang lang-zh">本地且私密</h3>
+            <h3 class="lang lang-en">Local and private</h3>
+            <p class="lang lang-zh">没有账号、分析或追踪；链接只会写入你自己的剪贴板。</p>
+            <p class="lang lang-en">No account, analytics, or tracking. Links go only to your clipboard.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section install-section" id="install">
+        <div class="section-heading">
+          <p class="section-kicker">
+            <span class="lang lang-zh">开始使用</span>
+            <span class="lang lang-en">Get started</span>
+          </p>
+          <h2 class="lang lang-zh">三步安装。</h2>
+          <h2 class="lang lang-en">Install in three steps.</h2>
+        </div>
+
+        <ol class="install-steps">
+          <li>
+            <span class="step-number">1</span>
+            <div>
+              <h3 class="lang lang-zh">下载并解压</h3>
+              <h3 class="lang lang-en">Download and extract</h3>
+              <p class="lang lang-zh">下载最新的 <code>LinkTap.zip</code>，然后将它解压。</p>
+              <p class="lang lang-en">Download the latest <code>LinkTap.zip</code>, then extract it.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">2</span>
+            <div>
+              <h3 class="lang lang-zh">打开扩展程序页面</h3>
+              <h3 class="lang lang-en">Open Extensions</h3>
+              <p><code>chrome://extensions/</code></p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">3</span>
+            <div>
+              <h3 class="lang lang-zh">加载文件夹</h3>
+              <h3 class="lang lang-en">Load the folder</h3>
+              <p class="lang lang-zh">开启“开发者模式”，点击“加载已解压的扩展程序”。</p>
+              <p class="lang lang-en">Enable Developer mode and select Load unpacked.</p>
+            </div>
+          </li>
+        </ol>
+
+        <a class="button button-primary install-button" href="https://github.com/haohailong/LinkTap/releases/latest">
+          <span class="lang lang-zh">查看最新 Release</span>
+          <span class="lang lang-en">View latest release</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <img src="assets/icon128.png" width="34" height="34" alt="">
+        <strong>LinkTap</strong>
+      </div>
+      <p>© 2026 <a href="https://github.com/haohailong">Hailong Hao · @haohailong</a></p>
+      <div class="footer-links">
+        <a href="https://github.com/haohailong/LinkTap/blob/main/PRIVACY.md">
+          <span class="lang lang-zh">隐私</span><span class="lang lang-en">Privacy</span>
+        </a>
+        <a href="https://github.com/haohailong/LinkTap/blob/main/LICENSE">MIT License</a>
+        <a href="https://github.com/haohailong/LinkTap">GitHub</a>
+      </div>
+    </footer>
+  </body>
+</html>
