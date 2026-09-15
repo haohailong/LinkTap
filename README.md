@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <p align="center">
   <img src="assets/icons/icon128.png" width="112" height="112" alt="LinkTap Logo">
 </p>
@@ -10,24 +12,36 @@
 </p>
 
 <p align="center">
-  <img alt="Version 2.0.1" src="https://img.shields.io/badge/version-2.0.1-1744e8?style=flat-square">
+  <a href="#zh-cn">简体中文</a>
+  ·
+  <a href="#english">English</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/haohailong/LinkTap/releases/latest"><img alt="Version 2.0.1" src="https://img.shields.io/badge/version-2.0.1-1744e8?style=flat-square"></a>
   <img alt="Manifest V3" src="https://img.shields.io/badge/Chrome-Manifest_V3-34a853?style=flat-square&logo=googlechrome&logoColor=white">
   <img alt="5 languages" src="https://img.shields.io/badge/languages-5-7c3aed?style=flat-square">
 </p>
 
 <p align="center">
-  <a href="../../releases/latest"><strong>下载最新版本</strong></a>
+  <a href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip"><strong>直接下载 / Direct download</strong></a>
   ·
-  <a href="CHANGELOG.md">更新记录</a>
+  <a href="https://github.com/haohailong/LinkTap/releases/latest">发布说明 / Release notes</a>
   ·
-  <a href="PRIVACY.md">隐私说明</a>
+  <a href="CHANGELOG.md">更新记录 / Changelog</a>
   ·
-  <a href="SECURITY.md">安全政策</a>
+  <a href="PRIVACY.md">隐私 / Privacy</a>
+  ·
+  <a href="SECURITY.md">安全 / Security</a>
 </p>
 
 ---
 
-## 功能
+<a id="zh-cn"></a>
+
+## 简体中文
+
+### 功能
 
 - 按住一个或多个修饰键并点击链接，立即复制完整 URL。
 - 自由组合 Ctrl / Control、Alt / Option、Shift、Meta / Command。
@@ -37,21 +51,13 @@
 - 设置自动保存，并可通过浏览器工具栏随时启用或暂停。
 - 自动跟随 Chrome 界面语言。
 
-## 支持语言
+### 支持语言
 
-- English
-- 简体中文
-- 繁體中文
-- 日本語
-- 한국어
+English、简体中文、繁體中文、日本語、한국어。不在列表中的语言会自动使用英语。
 
-不在列表中的语言会自动使用英语。
+### 安装
 
-## 安装
-
-### 从 Release 安装
-
-1. 打开 [Releases](../../releases/latest)。
+1. 打开 [Releases](https://github.com/haohailong/LinkTap/releases/latest)。
 2. 下载 `LinkTap.zip` 或带版本号的 ZIP 文件。
 3. 解压下载的文件。
 4. 在 Chrome 地址栏打开 `chrome://extensions/`。
@@ -60,7 +66,7 @@
 
 > Chrome 不支持直接从 ZIP 安装未上架的扩展，必须先解压。
 
-## 使用
+### 使用
 
 1. 点击 Chrome 工具栏中的 LinkTap 图标。
 2. 选择一个或多个修饰键。
@@ -69,7 +75,7 @@
 
 默认组合为 `Ctrl + Shift + 点击`。组合键采用精确匹配：如果设置为 `Ctrl`，`Ctrl + Shift + 点击` 不会触发。
 
-## 权限说明
+### 权限说明
 
 | 权限 | 用途 |
 | --- | --- |
@@ -80,11 +86,11 @@
 
 LinkTap 不包含广告、统计、追踪器或外部网络请求，不保存或上传浏览记录。完整说明见 [PRIVACY.md](PRIVACY.md)。
 
-## 限制
+### 使用限制
 
 Chrome 不允许内容脚本运行在 `chrome://` 内部页面、Chrome 网上应用店及部分受保护页面，因此这些页面无法使用 LinkTap。
 
-## 从源码构建
+### 从源码构建
 
 项目无需安装依赖或执行编译。使用 Python 3 生成可重复的发布包：
 
@@ -99,17 +105,104 @@ LinkTap-<version>.zip
 LinkTap-<version>.sha256
 ```
 
-## 发布新版本
+### 发布新版本
 
 1. 更新 `manifest.json` 中的版本号和 `CHANGELOG.md`。
 2. 提交修改并创建对应标签，例如 `v2.0.1`。
 3. 将标签推送到 GitHub。
 4. GitHub Actions 会验证版本、构建 ZIP、生成 SHA-256，并创建 GitHub Release。
 
-## 参与贡献
+[返回顶部](#top) · [Jump to English](#english)
+
+---
+
+<a id="english"></a>
+
+## English
+
+### Features
+
+- Copy a complete link URL instantly by modifier-clicking it.
+- Combine Ctrl / Control, Alt / Option, Shift, and Meta / Command freely.
+- Match the configured modifiers exactly to prevent accidental activation.
+- Prevent navigation, new-tab opening, and Option-click downloads when activated.
+- Support macOS Control-click and all four modifiers used together.
+- Save settings automatically and enable or pause LinkTap from the toolbar.
+- Follow Chrome's interface language automatically.
+
+### Supported languages
+
+English, Simplified Chinese, Traditional Chinese, Japanese, and Korean. Other browser languages fall back to English.
+
+### Installation
+
+1. Open the [latest Release](https://github.com/haohailong/LinkTap/releases/latest).
+2. Download `LinkTap.zip` or the versioned ZIP archive.
+3. Extract the downloaded archive.
+4. Open `chrome://extensions/` in Chrome.
+5. Enable **Developer mode** in the top-right corner.
+6. Select **Load unpacked** and choose the extracted folder.
+
+> Chrome cannot install an unpublished extension directly from a ZIP archive. Extract it first.
+
+### Usage
+
+1. Select the LinkTap icon in the Chrome toolbar.
+2. Choose one or more modifier keys.
+3. Hold the selected keys and left-click any link.
+4. When the confirmation appears, the URL is in your clipboard.
+
+The default combination is `Ctrl + Shift + click`. Modifier matching is exact: if you configure `Ctrl`, `Ctrl + Shift + click` will not activate LinkTap.
+
+### Permissions
+
+| Permission | Purpose |
+| --- | --- |
+| Web page access | Detect the clicked link and read only its URL |
+| `scripting` | Add the content script to existing tabs after install, update, or opening settings |
+| `clipboardWrite` | Write the selected link URL to the clipboard |
+| `storage` | Save the enabled state and modifier preferences |
+
+LinkTap contains no ads, analytics, trackers, or external network requests. It does not store or upload browsing history. See [PRIVACY.md](PRIVACY.md) for details.
+
+### Limitations
+
+Chrome does not allow content scripts on `chrome://` pages, the Chrome Web Store, or some other protected pages, so LinkTap cannot run there.
+
+### Build from source
+
+No dependencies or compilation are required. Use Python 3 to create a reproducible release archive:
+
+```bash
+python3 scripts/package_release.py
+```
+
+The generated files are placed in `dist/`:
+
+```text
+LinkTap-<version>.zip
+LinkTap-<version>.sha256
+```
+
+### Publish a new release
+
+1. Update the version in `manifest.json` and add the release notes to `CHANGELOG.md`.
+2. Commit the changes and create a matching tag, such as `v2.0.1`.
+3. Push the tag to GitHub.
+4. GitHub Actions verifies the version, builds the ZIP archives and SHA-256 files, and creates the GitHub Release.
+
+[Back to top](#top) · [跳转到简体中文](#zh-cn)
+
+---
+
+## Contributing / 参与贡献
 
 欢迎提交问题和改进建议。提交代码前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，安全问题请按照 [SECURITY.md](SECURITY.md) 私下报告。
 
-## 许可证
+Issues and improvements are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting code. Please report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
 
-本项目尚未声明开源许可证。公开发布前，请由项目所有者选择适合的许可证；未明确授权的情况下，默认版权仍由项目所有者保留。
+## License / 许可证
+
+本项目尚未声明开源许可证；未明确授权时，默认版权仍由项目所有者保留。
+
+No open-source license has been selected. Unless permission is explicitly granted, all rights remain reserved by the project owner.
