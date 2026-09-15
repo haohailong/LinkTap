@@ -1,0 +1,49 @@
+name: Bug report
+description: 报告可复现的问题
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请勿在公开 Issue 中提交密码、Cookie、私人网址或其他敏感信息。
+  - type: input
+    id: version
+    attributes:
+      label: LinkTap 版本
+      placeholder: 例如 2.0.1
+    validations:
+      required: true
+  - type: input
+    id: chrome
+    attributes:
+      label: Chrome 与操作系统版本
+      placeholder: 例如 Chrome 140 / macOS 15
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: 请按顺序列出操作步骤
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+    validations:
+      required: true
+  - type: checkboxes
+    id: protected
+    attributes:
+      label: 页面类型
+      options:
+        - label: 问题不是发生在 chrome://、Chrome 网上应用店或其他受保护页面
+          required: true

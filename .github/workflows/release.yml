@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Verify tag and manifest versions
+        shell: bash
+        run: |
+          version="$(python3 -c 'import json; print(json.load(open("manifest.json", encoding="utf-8"))["version"])')"
+          test "${GITHUB_REF_NAME}" = "v${version}"
+
+      - name: Build release archives
+        run: |
+          python3 scripts/package_release.py --output-dir release
+          cp "release/LinkTap-${GITHUB_REF_NAME#v}.zip" release/LinkTap.zip
+          cd release
+          sha256sum LinkTap.zip > LinkTap.zip.sha256
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            release/LinkTap.zip \
+            release/LinkTap.zip.sha256 \
+            "release/LinkTap-${GITHUB_REF_NAME#v}.zip" \
+            "release/LinkTap-${GITHUB_REF_NAME#v}.sha256" \
+            --verify-tag \
+            --generate-notes \
+            --title "LinkTap ${GITHUB_REF_NAME}"

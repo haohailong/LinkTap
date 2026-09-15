@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkTap</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <header class="topbar">
+        <div class="brand">
+          <img src="assets/icons/icon48.png" width="44" height="44" alt="" />
+          <div class="brand-copy">
+            <h1>LinkTap</h1>
+            <p data-i18n="tagline">Click. Copy. Done.</p>
+          </div>
+        </div>
+
+        <label class="enable-control">
+          <span data-i18n="enabledLabel">Enabled</span>
+          <span class="switch">
+            <input id="enabled" type="checkbox" data-i18n-aria="enabledLabel" />
+            <span class="slider"></span>
+          </span>
+        </label>
+      </header>
+
+      <section class="intro" aria-live="polite">
+        <div class="state-line">
+          <span id="status-dot" class="status-dot"></span>
+          <strong id="state-text" data-i18n="activeStatus">Ready on this page</strong>
+        </div>
+        <p data-i18n="instruction">
+          Hold your shortcut and click any link. LinkTap copies the URL without opening it.
+        </p>
+      </section>
+
+      <section class="shortcut-card">
+        <div class="section-heading">
+          <div>
+            <h2 data-i18n="shortcutTitle">Your shortcut</h2>
+            <p data-i18n="shortcutHint">Choose one or more modifier keys</p>
+          </div>
+        </div>
+
+        <fieldset id="modifier-fieldset">
+          <legend class="sr-only" data-i18n="shortcutTitle">Your shortcut</legend>
+          <div class="modifier-grid">
+            <label class="modifier">
+              <input type="checkbox" name="modifier" value="ctrl" />
+              <span class="key-card"><span id="ctrl-label">Ctrl</span><i></i></span>
+            </label>
+            <label class="modifier">
+              <input type="checkbox" name="modifier" value="alt" />
+              <span class="key-card"><span id="alt-label">Alt</span><i></i></span>
+            </label>
+            <label class="modifier">
+              <input type="checkbox" name="modifier" value="shift" />
+              <span class="key-card"><span id="shift-label">Shift</span><i></i></span>
+            </label>
+            <label class="modifier">
+              <input type="checkbox" name="modifier" value="meta" />
+              <span class="key-card"><span id="meta-label">Meta</span><i></i></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="gesture-preview">
+          <span class="gesture-label" data-i18n="gestureLabel">Gesture</span>
+          <div id="shortcut" class="gesture-keys" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <footer>
+        <span class="autosave"><i></i><span data-i18n="autoSave">Changes save automatically</span></span>
+        <span id="status" class="save-status" role="status"></span>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
