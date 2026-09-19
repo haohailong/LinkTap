@@ -196,14 +196,29 @@ p {
 h1 {
   max-width: 720px;
   margin: 0;
-  font-size: clamp(3.7rem, 7vw, 6.5rem);
-  line-height: 0.96;
-  letter-spacing: -0.072em;
+  font-size: clamp(3.5rem, 6.4vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.042em;
 }
 
 h1 em {
   color: var(--blue);
   font-style: normal;
+}
+
+.title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-title-zh {
+  font-size: 0.8em;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.hero-title-en {
+  letter-spacing: -0.032em;
 }
 
 .hero-description {
@@ -702,7 +717,11 @@ footer > p {
   }
 
   h1 {
-    font-size: clamp(3rem, 16vw, 4.5rem);
+    font-size: clamp(2.85rem, 15vw, 4.25rem);
+  }
+
+  .hero-title-zh {
+    font-size: 0.82em;
   }
 
   .hero-actions {
