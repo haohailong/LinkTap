@@ -16,7 +16,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 README_PATH = PROJECT_ROOT / "README.md"
-LANDING_PAGE_PATH = PROJECT_ROOT / "docs" / "index.html"
+LANDING_PAGE_PATH = PROJECT_ROOT / "out" / "index.html"
 FIXED_TIMESTAMP = (2026, 1, 1, 0, 0, 0)
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 PNG_METADATA_CHUNKS = {b"eXIf", b"iTXt", b"tEXt", b"tIME", b"zTXt"}
