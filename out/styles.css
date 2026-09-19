@@ -57,6 +57,11 @@ body[data-language="en"] .lang-en {
   display: revert;
 }
 
+body[data-language="zh"] .hero-title-zh,
+body[data-language="en"] .hero-title-en {
+  display: block;
+}
+
 .skip-link {
   position: fixed;
   z-index: 100;
