@@ -28,7 +28,7 @@
 <!-- release-sha256:start -->
 <p align="center">
   <strong>v2.0.2 · SHA-256 (LinkTap.zip)</strong><br>
-  <code>4ea02477e5e3bbe93ccc273eacbf313e96e834463430d802ec772fb7879b4620</code><br>
+  <code>0de9ae2828e099020812f93f1f6d3203ebc1de21114345700855c04ac08b4dbe</code><br>
   <a href="https://github.com/haohailong/LinkTap/releases/latest/download/LinkTap.zip.sha256">校验文件 / Checksum file</a>
 </p>
 <!-- release-sha256:end -->
